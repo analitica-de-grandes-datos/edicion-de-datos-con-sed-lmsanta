@@ -41,3 +41,10 @@
 #
 #  >>> Escriba su codigo a partir de este punto <<<
 #
+sed 'y/ac,;/AC.,/' data.csv | 
+sed 's/n/N/g'|
+sed 's/,N/,\\N/g'|
+sed 's/,,/,\\N,/g' |
+sed 's/,$/,\\N/' |
+sed 's/\([0-9]\{2\}\)\/\([0-9]\{2\}\)\/\([0-9]\{2\}\)/20\3-\2-\1/g' |
+sed 's/1\/9\/2014/2014-09-01/' > output.csv
